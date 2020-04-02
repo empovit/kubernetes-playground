@@ -1,0 +1,43 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: word-count
+spec:
+  template:
+    spec:
+      volumes:
+        - name: data
+          emptyDir: {}
+
+      containers:
+        - name: python
+          image: python:3.8.2-alpine3.11
+          command: ["python", "-u", "/data/script.py", "/data/input.txt"]
+          volumeMounts:
+            - name: data
+
+      initContainers:
+        - name: script-downloader
+          image: radial/busyboxplus:curl
+          command:
+            [
+              "curl",
+              "-o",
+              "/data/script.py",
+              "https://raw.githubusercontent.com/empovit/kubernetes-playground/master/job/word_count.py",
+            ]
+          volumeMounts:
+            - name: data
+        - name: script-downloader
+          image: radial/busyboxplus:curl
+          command:
+            [
+              "curl",
+              "-o",
+              "/data/data.txt",
+              "https://www.gutenberg.org/files/2600/2600-0.txt",
+            ]
+          volumeMounts:
+            - name: data
+          restartPolicy: Never
+  backoffLimit: 0

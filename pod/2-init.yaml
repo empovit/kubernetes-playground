@@ -3,7 +3,7 @@ kind: Pod
 metadata:
     name: web-server
     labels:
-        app: web
+        app: demo
 spec:
     volumes:
     - name: web-pages
@@ -13,10 +13,10 @@ spec:
     - name: server
       image: httpd:2.4
       ports:
-        - containerPort: 80
+      - containerPort: 80
       volumeMounts:
-        - name: web-pages
-          mountPath: /usr/local/apache2/htdocs/
+      - name: web-pages
+        mountPath: /usr/local/apache2/htdocs/
 
     initContainers:
     - name: initializer
@@ -26,5 +26,5 @@ spec:
         value: https://github.com/empovit/kubernetes-playground.git
       command: ['sh', '-c', 'git clone $(REPO_URL) /pages']  
       volumeMounts:
-        - name: web-pages
-          mountPath: /pages/
+      - name: web-pages
+        mountPath: /pages/
