@@ -17,6 +17,7 @@ spec:
       volumeMounts:
         - name: web-pages
           mountPath: /usr/local/apache2/htdocs/
+          subPath: pod
 
     - name: updater
       image: alpine/git:v2.24.1

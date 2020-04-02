@@ -1,8 +1,10 @@
 # Pod Examples
 
-1. Start a simple Web server that serves a default *index.html*.
-2. Start the Web server and make it serve the *index.html* from this repository by cloning the repository to a shared volume.
-3. Start the Web server, make it serve this repository, and periodically check for updates. Test by making changes to *index.html*, then committing and pushing them. Observe the page changing on the Web server.
+1. Start a simple Web server that serves a default *index.html* (`kubectl apply -f 1-single.yaml`).
+
+2. Start the Web server and make it serve the *index.html* from this repository by cloning the repository to a shared volume (`kubectl apply -f 2-init.yaml`).
+
+3. Start the Web server, make it serve this repository, and periodically check for updates. Test by making changes to *index.html*, then committing and pushing them. Observe the page changing on the Web server (`kubectl apply -f 3-sidecar.yaml`).
 
 **WARNING**: The files are hard-coded to point to this GitHub repository.
 Since you do not have push permissions to it, you will need to modify the value of 

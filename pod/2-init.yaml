@@ -17,6 +17,7 @@ spec:
       volumeMounts:
         - name: web-pages
           mountPath: /usr/local/apache2/htdocs/
+          subPath: pod
 
   initContainers:
     - name: initializer

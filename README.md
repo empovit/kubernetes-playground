@@ -32,8 +32,10 @@ Show the details of a particular object
 
 * `kubectl describe <type> <name>`
 
-## Pods
+## Examples
 
-*Pod* subdirectory contains simple pod examples and their explanation.
+ The following subdirectories contain simple examples with explanations. 
+ The examples are organized mostly by object types.
 
-
+* [Pods](pod/)
+* [Jobs](job/)
