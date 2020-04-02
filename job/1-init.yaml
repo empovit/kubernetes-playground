@@ -15,6 +15,7 @@ spec:
           command: ["python", "-u", "/data/script.py", "/data/input.txt"]
           volumeMounts:
             - name: data
+              mountPath: /data/
 
       initContainers:
         - name: script-downloader
@@ -28,16 +29,19 @@ spec:
             ]
           volumeMounts:
             - name: data
-        - name: script-downloader
+              mountPath: /data/
+        - name: input-downloader
           image: radial/busyboxplus:curl
           command:
             [
               "curl",
               "-o",
-              "/data/data.txt",
+              "/data/input.txt",
               "https://www.gutenberg.org/files/2600/2600-0.txt",
             ]
           volumeMounts:
             - name: data
-          restartPolicy: Never
+              mountPath: /data/
+      
+      restartPolicy: Never
   backoffLimit: 0

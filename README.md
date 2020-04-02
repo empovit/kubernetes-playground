@@ -28,6 +28,10 @@ Print a particular object
 * `kubectl get <type> <name>`
 * `kubectl get pod web-server`
 
+Show the details of a particular object
+
+* `kubectl describe <type> <name>`
+
 ## Pods
 
 *Pod* subdirectory contains simple pod examples and their explanation.

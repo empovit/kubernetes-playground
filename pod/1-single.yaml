@@ -6,8 +6,7 @@ metadata:
     app: demo
 spec:
   containers:
-  - name: web-server
-    image: httpd:2.4
-    ports:
-    - containerPort: 80
-    
+    - name: web-server
+      image: httpd:2.4
+      ports:
+        - containerPort: 80
